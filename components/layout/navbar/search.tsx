@@ -35,9 +35,9 @@ export default function Search() {
         defaultValue={searchParams?.get('q') || ''}
         className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-black placeholder:text-neutral-500 dark:border-neutral-800 dark:bg-transparent dark:text-white dark:placeholder:text-neutral-400"
       />
-      <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
+      <button className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <MagnifyingGlassIcon className="h-4" />
-      </div>
+      </button>
     </form>
   );
 }
