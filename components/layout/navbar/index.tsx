@@ -27,17 +27,17 @@ export default async function Navbar() {
               {SITE_NAME}
             </div>
           </Link>
-          {menu.length ? (
-            <ul className="hidden gap-6 text-sm md:flex md:items-center">
-              <li key="thisisadvancedsearch">
-                <Link
-                  href="/search/advanced"
-                  className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-                >
-                  Advanced Search
-                </Link>
-              </li>
-              {menu.map((item: Menu) => (
+          <ul className="hidden gap-6 text-sm md:flex md:items-center">
+            <li key="thisisadvancedsearch">
+              <Link
+                href="/search/advanced"
+                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+              >
+                Advanced Search
+              </Link>
+            </li>
+            {menu.length &&
+              menu.map((item: Menu) => (
                 <li key={item.title}>
                   <Link
                     href={item.path}
@@ -47,8 +47,7 @@ export default async function Navbar() {
                   </Link>
                 </li>
               ))}
-            </ul>
-          ) : null}
+          </ul>
         </div>
         <div className="hidden justify-center md:flex md:w-1/3">
           <Suspense fallback={<SearchSkeleton />}>
