@@ -38,8 +38,9 @@ export default function AdvancedSearch() {
     const models = getModels(make);
     setSelectedMake(make);
     setModels(models);
+    if (models[0]) setSelectedModel(models[0]);
+    else setSelectedModel('');
     setSizes([]);
-    setSelectedModel('');
     setSelectedSize('');
     handleSearch(make);
   };
@@ -48,7 +49,8 @@ export default function AdvancedSearch() {
     const sizes = getSizes(selectedMake, model);
     setSelectedModel(model);
     setSizes(sizes);
-    setSelectedSize('');
+    if (sizes[0]) setSelectedSize(sizes[0]);
+    else setSelectedSize('');
     handleSearch(model);
   };
   const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -69,6 +71,7 @@ export default function AdvancedSearch() {
           <select
             value={selectedMake}
             onChange={(event) => handleMakeChange(event)}
+            onFocus={() => handleSearch(selectedMake)}
             id="makes"
             name="selectedMakes"
             size={10}
@@ -93,6 +96,7 @@ export default function AdvancedSearch() {
           <select
             value={selectedModel}
             onChange={(event) => handleModelChange(event)}
+            onFocus={() => handleSearch(selectedModel)}
             id="models"
             name="selectedModels"
             size={10}
@@ -117,6 +121,7 @@ export default function AdvancedSearch() {
           <select
             value={selectedSize}
             onChange={(event) => handleSizeChange(event)}
+            onFocus={() => handleSearch(selectedSize)}
             id="sizes"
             name="selectedSizes"
             size={10}
