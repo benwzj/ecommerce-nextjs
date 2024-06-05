@@ -79,6 +79,16 @@
       "make": "Celair",
       "model": "Model Low Profile LP 850",
       "size": "755 x 741 x 75mm"
+    },
+    {
+      "make": "Braemar",
+      "model": " Model LCB 550",
+      "size": "853 x 526 x 90mm"
+    },
+    {
+      "make": "Braemar",
+      "model": "Model LCB 450",
+      "size": "847 x 526 x 90mm"
     }
   ]
 }

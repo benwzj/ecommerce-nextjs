@@ -45,6 +45,7 @@ export default function AdvancedSearch() {
     setSelectedSize('');
     handleSearch(make);
   };
+
   const handleModelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const model = event.target.value;
     const sizes = getSizes(selectedMake, model);
@@ -54,11 +55,13 @@ export default function AdvancedSearch() {
     else setSelectedSize('');
     handleSearch(model);
   };
+
   const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const size = event.target.value;
     setSelectedSize(size);
     handleSearch(size);
   };
+
   return (
     <div className="flex flex-col sm:flex-row">
       {makes.length > 0 && (
@@ -67,7 +70,7 @@ export default function AdvancedSearch() {
           value={selectedMake}
           pads={makes}
           onChange={handleMakeChange}
-          onFocus={handleSearch}
+          onFocus={handleMakeChange}
         />
         // <div className="w-full min-w-24 px-0.5 sm:w-1/3">
         //   <label
@@ -99,7 +102,7 @@ export default function AdvancedSearch() {
           value={selectedModel}
           pads={models}
           onChange={handleModelChange}
-          onFocus={handleSearch}
+          onFocus={handleModelChange}
         />
         // <div className="w-full min-w-24 px-0.5 sm:w-1/3">
         //   <label
@@ -131,7 +134,7 @@ export default function AdvancedSearch() {
           value={selectedSize}
           pads={sizes}
           onChange={handleSizeChange}
-          onFocus={handleSearch}
+          onFocus={handleSizeChange}
         />
         // <div className="w-full min-w-24 px-0.5 sm:w-1/3">
         //   <label

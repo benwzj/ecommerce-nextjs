@@ -2,7 +2,7 @@ type PadsSelectProp = {
   id: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  onFocus: (value: string) => void;
+  onFocus: (event: React.FocusEvent<HTMLSelectElement>) => void;
   pads: string[];
 };
 
@@ -16,7 +16,7 @@ export default function PadsSelect({ id, value, onChange, onFocus, pads }: PadsS
       <select
         value={value}
         onChange={(event) => onChange(event)}
-        onFocus={() => onFocus(value)}
+        onFocus={(event) => onFocus(event)}
         id="makes"
         name="selectedMakes"
         size={10}
