@@ -1,112 +1,84 @@
 {
   "cooler_pads": [
     {
+      "make": "Breezair",
+      "model": "Model EXH 170 EXH170 EXD150 ES145 EXH 190 EXH 170 EXD 150 ES 145",
+      "size": "800 x 635 x 90mm"
+    },
+    {
+      "make": "Breezair",
+      "model": "Model EXH 210 EXH210",
+      "size": ["800 x 635 x 90mm", "800 x 635 x 100mm"]
+    },
+    {
+      "make": "Breezair",
+      "model": "Model EXQ210 EXQ 210",
+      "size": ["800 x 635 x 90mm", "800 x 635 x 100mm"]
+    },
+    {
+      "make": "Breezair",
+      "model": "Model ES 125",
+      "size": "800 x 436 x 90mm"
+    },
+    {
       "make": "Bonaire",
       "model": "Integra VSS 55|50(100MM)",
-      "size": "4*755x378X100MM",
-      "id": 1000
+      "size": "755 x 378 x 100mm"
     },
     {
       "make": "Bonaire",
-      "model": "Integra VSS 55",
-      "size": "4*755x400X100MM",
-      "id": 1001
+      "model": "VSM 65",
+      "size": "755 x 487 x 100mm"
     },
     {
       "make": "Bonaire",
-      "model": "Integra VSS 65",
-      "size": ["4*800x378X100MM", "4*800x378X75MM", "4*800x378X90MM"],
-      "id": 1002
+      "model": "VSM 60|65",
+      "size": "755 x 487 x 85mm"
+    },
+    {
+      "make": "Bonaire",
+      "model": "VSS 60|65",
+      "size": ["755 x 487 x 85mm", "755 x 487 x 75mm", "755 x 487 x 90mm"]
     },
     {
       "make": "Bonaire",
       "model": "Integra VSS 575",
-      "size": "4*900x378X100MM",
-      "id": 1003
+      "size": "900 x 378 x 100mm"
     },
     {
       "make": "Coolair",
-      "model": "CPL 850 75mm",
-      "size": "4*785x378X100MM",
-      "id": 1004
+      "model": "Model CPL 850",
+      "size": "847 x 526 x 90mm"
     },
     {
       "make": "Coolair",
-      "model": "CPL700",
-      "size": "4*755x378X100MM",
-      "id": 1006
+      "model": "Model CPL 1100",
+      "size": "847 x 526 x 90mm"
     },
     {
       "make": "Coolair",
       "model": "Integra CPL450",
-      "size": "4*765x3778X100MM",
-      "id": 1007
+      "size": "847 x 526 x 90mm"
     },
     {
-      "make": "Breezair",
-      "model": "EP280",
-      "size": "4*785x3778X100MM",
-      "id": 1008
+      "make": "Coolbreeze",
+      "model": "Heritage F/D160",
+      "size": "828 x 458 x 100mm"
     },
     {
-      "make": "Breezair",
-      "model": "EP300",
-      "size": "4*55x38X100MM",
-      "id": 1009
+      "make": "Brivis",
+      "model": "Model Contour L43",
+      "size": "847 x 618 x 90mm"
     },
     {
-      "make": "Breezair",
-      "model": "EP301",
-      "size": "4*9955x378X100MM",
-      "id": 1010
+      "make": "Brivis",
+      "model": "Model Contour L53",
+      "size": "847 x 618 x 110mm"
     },
     {
-      "make": "Breezair",
-      "model": "EP302",
-      "size": "4*95x378X900MM",
-      "id": 1011
-    },
-    {
-      "make": "Breezair",
-      "model": "EP303",
-      "size": "4*95x37X10MM",
-      "id": 1012
-    },
-    {
-      "make": "Breezair",
-      "model": "EP304",
-      "size": "4*995x38X10MM",
-      "id": 1013
-    },
-    {
-      "make": "Breezair",
-      "model": "EP305",
-      "size": "4*995x388X100MM",
-      "id": 1014
-    },
-    {
-      "make": "Breezair",
-      "model": "EP306",
-      "size": "4*955x978X100MM",
-      "id": 1015
-    },
-    {
-      "make": "Breezair",
-      "model": "EP307",
-      "size": "4*95x378X160MM",
-      "id": 1016
-    },
-    {
-      "make": "Breezair",
-      "model": "EVIER1003",
-      "size": "4*995x378X100MM",
-      "id": 1017
-    },
-    {
-      "make": "Breezair",
-      "model": "EP3EVIER100307",
-      "size": "4*9955x388X100MM",
-      "id": 1018
+      "make": "Celair",
+      "model": "Model Low Profile LP 850",
+      "size": "755 x 741 x 75mm"
     }
   ]
 }

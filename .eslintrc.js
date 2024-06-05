@@ -11,6 +11,7 @@ module.exports = {
         vars: 'all'
       }
     ],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'prefer-const': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'unicorn/filename-case': [

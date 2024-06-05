@@ -6,20 +6,20 @@ type CoolerPad = {
   size: string | string[];
   id: number;
 };
+let index = 1000;
+const coolerPads: CoolerPad[] = padsJson.cooler_pads.map((pad) => ({ ...pad, id: index++ }));
 
 export function getMakes(): string[] {
-  const pads: CoolerPad[] = padsJson.cooler_pads;
   const makeSet: Set<string> = new Set();
-  for (const pad of pads) {
+  for (const pad of coolerPads) {
     makeSet.add(pad.make);
   }
   return Array.from(makeSet);
 }
 
 export function getModels(make: string): string[] {
-  const pads: CoolerPad[] = padsJson.cooler_pads;
   const models = [];
-  for (const pad of pads) {
+  for (const pad of coolerPads) {
     if (pad.make === make) {
       models.push(pad.model);
     }
@@ -28,9 +28,8 @@ export function getModels(make: string): string[] {
 }
 
 export function getSizes(make: string, model: string): string[] {
-  const pads: CoolerPad[] = padsJson.cooler_pads;
   const sizes = [];
-  for (const pad of pads) {
+  for (const pad of coolerPads) {
     if (pad.model === model && pad.make === make) {
       if (typeof pad.size === 'object') sizes.push(...pad.size);
       else sizes.push(pad.size);
