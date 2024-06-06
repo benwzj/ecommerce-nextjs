@@ -79,7 +79,7 @@ export default function MobileMenu({ menu }: { menu: Menu[] }) {
                 <ul className="flex w-full flex-col">
                   <li
                     className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
-                    key="Advanced Search"
+                    key="Model Search"
                   >
                     <Link href="/search/advanced" onClick={closeMobileMenu}>
                       Advanced Search
