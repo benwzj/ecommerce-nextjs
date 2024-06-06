@@ -2,7 +2,22 @@
   "cooler_pads": [
     {
       "make": "Breezair",
-      "model": "Model EXH 170 EXH170 EXD150 ES145 EXH 190 EXH 170 EXD 150 ES 145",
+      "model": "EXH 170 EXH170",
+      "size": "800 x 635 x 90mm"
+    },
+    {
+      "make": "Breezair",
+      "model": "EXD150 EXD 150",
+      "size": "800 x 635 x 90mm"
+    },
+    {
+      "make": "Breezair",
+      "model": "ES145 ES 145",
+      "size": "800 x 635 x 90mm"
+    },
+    {
+      "make": "Breezair",
+      "model": "EXH 190 EXH190",
       "size": "800 x 635 x 90mm"
     },
     {
