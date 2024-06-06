@@ -33,7 +33,7 @@ export default async function Navbar() {
                 href="/search/advanced"
                 className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
               >
-                Advanced Search
+                Model Search
               </Link>
             </li>
             {menu.length &&
