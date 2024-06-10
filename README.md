@@ -9,6 +9,12 @@ This project is based on Framework Next.js 14.
 - Using Shopify as CMS.
 - GraphQL
 
+## Shopify Integration
+
+- Install Shopify Headless theme
+- Install the Shopify Headless app
+  - Headless app allow you to create an access token that can be used to authenticate requests to **Storefront API**.
+
 ## Running locally
 
 Need to the environment variables in `.env` file to run locally.
