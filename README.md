@@ -11,7 +11,10 @@ This project is based on Framework Next.js 14.
 
 ## Shopify Integration
 
+- Need a Shopify account and storefront
 - Install Shopify Headless theme
+  - Set headless theme as current active theme
+  - Hostname which is located in storefront setting set to "ecommerce-nextjs-hazel.vercel.app"
 - Install the Shopify Headless app
   - Headless app allow you to create an access token that can be used to authenticate requests to **Storefront API**.
 
