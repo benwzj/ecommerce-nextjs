@@ -1,5 +1,8 @@
 # Cooling pads E-Commerce project
 
+demo website:
+https://ecommerce-nextjs-hazel.vercel.app
+
 ## Overview
 
 This project is based on Framework Next.js 14.
