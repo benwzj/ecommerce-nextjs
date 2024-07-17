@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['next', 'prettier'],
+  extends: ['next', 'prettier', 'plugin:react/jsx-runtime'],
   plugins: ['unicorn'],
   rules: {
     'no-unused-vars': [
