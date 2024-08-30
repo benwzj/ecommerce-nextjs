@@ -17,11 +17,13 @@ export default function Search() {
 
     if (search.value) {
       newParams.set('q', search.value);
+      router.push(createUrl('/search', newParams));
     } else {
       newParams.delete('q');
+      router.push(createUrl('/search/advanced', newParams));
     }
 
-    router.push(createUrl('/search', newParams));
+    //router.push(createUrl('/search', newParams));
   }
 
   return (
