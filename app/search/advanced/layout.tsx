@@ -1,5 +1,4 @@
 import AdvancedSearch from 'components/advanced-search';
-import Footer from 'components/layout/footer';
 
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +9,6 @@ export default function SearchLayout({ children }: { children: React.ReactNode }
           <div className="order-last min-h-screen w-full pt-5 md:order-none">{children}</div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

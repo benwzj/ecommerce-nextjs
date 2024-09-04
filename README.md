@@ -1,6 +1,6 @@
 # Cooling pads E-Commerce project
 
-demo website:
+demo website address:
 https://ecommerce-nextjs-hazel.vercel.app
 
 ## Overview
