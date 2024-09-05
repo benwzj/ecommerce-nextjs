@@ -6,7 +6,7 @@
     "pnpm": ">=8"
   },
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev --turbo --port 5004",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
