@@ -1,7 +1,10 @@
 'use client';
 
 import { Dialog } from '@headlessui/react';
+import LogoSquare from 'components/logo-square';
+import { lusitana } from 'fonts/fonts';
 import { useState } from 'react';
+import LoginForm from './login-form';
 
 export default function LoginModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,13 +31,17 @@ export default function LoginModal() {
         </div>
       </button>
       <Dialog open={isOpen} onClose={closeLogin} className="relative z-50">
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div className="fixed inset-0 z-10 h-screen w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
-            <Dialog.Panel className="h-96 w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl ">
-              <p className="mt-2 text-sm/6 dark:text-white/50">
-                Welcome! I need your user name and passwork to login.
-              </p>
-              <div className="mt-4 flex gap-4">
+            <Dialog.Panel className="h-full w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-xl dark:border-neutral-700 dark:bg-black/80 dark:text-white">
+              <div
+                className={`${lusitana.className} mb-9 flex flex-row items-center gap-2 leading-none dark:text-white`}
+              >
+                <LogoSquare />
+                <p className="text-[44px]">SunnyDay</p>
+              </div>
+              <LoginForm />
+              {/* <div className="mt-4 flex gap-4">
                 <button
                   className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                   onClick={closeLogin}
@@ -47,7 +54,7 @@ export default function LoginModal() {
                 >
                   Cancel
                 </button>
-              </div>
+              </div> */}
             </Dialog.Panel>
           </div>
         </div>
