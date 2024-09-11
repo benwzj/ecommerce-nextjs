@@ -35,26 +35,12 @@ export default function LoginModal() {
           <div className="flex min-h-full items-center justify-center p-4">
             <Dialog.Panel className="h-full w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-xl dark:border-neutral-700 dark:bg-black/80 dark:text-white">
               <div
-                className={`${lusitana.className} mb-9 flex flex-row items-center gap-2 leading-none dark:text-white`}
+                className={`${lusitana.className} mb-9 flex items-center justify-center gap-2 leading-none dark:text-white`}
               >
                 <LogoSquare />
                 <p className="text-[44px]">SunnyDay</p>
               </div>
               <LoginForm />
-              {/* <div className="mt-4 flex gap-4">
-                <button
-                  className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                  onClick={closeLogin}
-                >
-                  Login
-                </button>
-                <button
-                  className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                  onClick={closeLogin}
-                >
-                  Cancel
-                </button>
-              </div> */}
             </Dialog.Panel>
           </div>
         </div>

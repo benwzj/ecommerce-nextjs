@@ -10,6 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
+import { createCustomerAccessTokenMutation } from './mutations/customer';
 import { getCartQuery } from './queries/cart';
 import {
   getCollectionProductsQuery,
@@ -39,6 +40,8 @@ import {
   ShopifyCollectionProductsOperation,
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
+  ShopifyCreateCustomerOperation,
+  ShopifyCustomer,
   ShopifyMenuOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
@@ -47,6 +50,7 @@ import {
   ShopifyProductRecommendationsOperation,
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
+  ShopifySignInCustomerOperation,
   ShopifyUpdateCartOperation
 } from './types';
 
@@ -449,4 +453,36 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   }
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
+}
+
+export async function signInCustomer(email: string, password: string): Promise<string | undefined> {
+  const res = await shopifyFetch<ShopifySignInCustomerOperation>({
+    query: createCustomerAccessTokenMutation,
+    variables: { email, password },
+    tags: [TAGS.customer],
+    cache: 'no-store'
+  });
+
+  if (!res.body.data.customerAccessToken) {
+    return undefined;
+  }
+
+  return res.body.data.customerAccessToken;
+}
+
+export async function createCustomer(
+  customer: ShopifyCustomer
+): Promise<ShopifyCustomer | undefined> {
+  const res = await shopifyFetch<ShopifyCreateCustomerOperation>({
+    query: createCustomerAccessTokenMutation,
+    variables: customer,
+    tags: [TAGS.customer],
+    cache: 'no-store'
+  });
+
+  if (!res.body.data.customer) {
+    return undefined;
+  }
+
+  return res.body.data.customer;
 }

@@ -128,6 +128,15 @@ export type ShopifyProduct = {
   updatedAt: string;
 };
 
+export type ShopifyCustomer = {
+  firstNam: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  acceptsMarketing: boolean;
+};
+
 export type ShopifyCartOperation = {
   data: {
     cart: ShopifyCart;
@@ -262,4 +271,21 @@ export type ShopifyProductsOperation = {
     reverse?: boolean;
     sortKey?: string;
   };
+};
+
+export type ShopifySignInCustomerOperation = {
+  data: {
+    customerAccessToken: string;
+  };
+  variables: {
+    email: string;
+    password: string;
+  };
+};
+
+export type ShopifyCreateCustomerOperation = {
+  data: {
+    customer: ShopifyCustomer;
+  };
+  variables: ShopifyCustomer;
 };
