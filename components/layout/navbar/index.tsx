@@ -1,6 +1,6 @@
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
-import Login from 'components/login';
+import { Login, SignUp } from 'components/login';
 import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
 
@@ -66,6 +66,7 @@ export default async function Navbar() {
           <div className="hidden font-serif text-3xl font-bold text-green-800 md:flex">Supply</div>
         </Link>
         <div className="flex justify-end gap-1 md:w-1/3">
+          <SignUp />
           <Login />
           <Suspense fallback={<OpenCart />}>
             <Cart />

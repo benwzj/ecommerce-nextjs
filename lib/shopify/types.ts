@@ -128,15 +128,6 @@ export type ShopifyProduct = {
   updatedAt: string;
 };
 
-export type ShopifyCustomer = {
-  firstNam: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  password: string;
-  acceptsMarketing: boolean;
-};
-
 export type ShopifyCartOperation = {
   data: {
     cart: ShopifyCart;
@@ -273,9 +264,55 @@ export type ShopifyProductsOperation = {
   };
 };
 
+export type ShopifyCustomer = {
+  id: string;
+  firstNam: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  acceptsMarketing: boolean;
+};
+
+export type ShopifyCustomerCreateInput = {
+  firstNam?: string;
+  lastName?: string;
+  email: string;
+  phone?: string;
+  password: string;
+  acceptsMarketing?: boolean;
+};
+
+export type ShopifyCustomerAccessTokenCreate = {
+  customerAccessToken: {
+    accessToken: string;
+  };
+  customerUserErrors: [
+    {
+      message: string;
+    }
+  ];
+};
+
+export type ShopifyCustomerCreateReturn = {
+  customer: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    acceptsMarketing: boolean;
+  };
+  customerUserErrors: [
+    {
+      field: string;
+      message: string;
+      code: string;
+    }
+  ];
+};
+
 export type ShopifySignInCustomerOperation = {
   data: {
-    customerAccessToken: string;
+    customerAccessTokenCreate: ShopifyCustomerAccessTokenCreate;
   };
   variables: {
     email: string;
@@ -285,7 +322,14 @@ export type ShopifySignInCustomerOperation = {
 
 export type ShopifyCreateCustomerOperation = {
   data: {
+    customerCreate: ShopifyCustomerCreateReturn;
+  };
+  variables: ShopifyCustomerCreateInput;
+};
+
+export type ShopifyGetCustomerOperation = {
+  data: {
     customer: ShopifyCustomer;
   };
-  variables: ShopifyCustomer;
+  variables: { customerAccessToken: string };
 };

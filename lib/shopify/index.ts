@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerAccessTokenMutation } from './mutations/customer';
+import { createCustomerAccessTokenMutation, createCustomerMutation } from './mutations/customer';
 import { getCartQuery } from './queries/cart';
 import {
   getCollectionProductsQuery,
@@ -42,6 +42,10 @@ import {
   ShopifyCreateCartOperation,
   ShopifyCreateCustomerOperation,
   ShopifyCustomer,
+  ShopifyCustomerAccessTokenCreate,
+  ShopifyCustomerCreateInput,
+  ShopifyCustomerCreateReturn,
+  ShopifyGetCustomerOperation,
   ShopifyMenuOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
@@ -455,28 +459,45 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
 }
 
-export async function signInCustomer(email: string, password: string): Promise<string | undefined> {
+export async function createCustomerAccessToken(
+  email: string,
+  password: string
+): Promise<ShopifyCustomerAccessTokenCreate | undefined> {
   const res = await shopifyFetch<ShopifySignInCustomerOperation>({
     query: createCustomerAccessTokenMutation,
     variables: { email, password },
-    tags: [TAGS.customer],
     cache: 'no-store'
   });
 
-  if (!res.body.data.customerAccessToken) {
+  if (!res.body.data.customerAccessTokenCreate) {
     return undefined;
   }
 
-  return res.body.data.customerAccessToken;
+  return res.body.data.customerAccessTokenCreate;
 }
 
 export async function createCustomer(
-  customer: ShopifyCustomer
-): Promise<ShopifyCustomer | undefined> {
+  customer: ShopifyCustomerCreateInput
+): Promise<ShopifyCustomerCreateReturn | undefined> {
   const res = await shopifyFetch<ShopifyCreateCustomerOperation>({
-    query: createCustomerAccessTokenMutation,
+    query: createCustomerMutation,
     variables: customer,
-    tags: [TAGS.customer],
+    cache: 'no-store'
+  });
+
+  if (!res.body.data.customerCreate) {
+    return undefined;
+  }
+
+  return res.body.data.customerCreate;
+}
+
+export async function getCustomer(
+  customerAccessToken: string
+): Promise<ShopifyCustomer | undefined> {
+  const res = await shopifyFetch<ShopifyGetCustomerOperation>({
+    query: createCustomerMutation,
+    variables: { customerAccessToken },
     cache: 'no-store'
   });
 
