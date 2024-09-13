@@ -17,6 +17,7 @@ import {
   getCollectionQuery,
   getCollectionsQuery
 } from './queries/collection';
+import { getCustomerQuery } from './queries/customer';
 import { getMenuQuery } from './queries/menu';
 import { getPageQuery, getPagesQuery } from './queries/page';
 import {
@@ -496,7 +497,7 @@ export async function getCustomer(
   customerAccessToken: string
 ): Promise<ShopifyCustomer | undefined> {
   const res = await shopifyFetch<ShopifyGetCustomerOperation>({
-    query: createCustomerMutation,
+    query: getCustomerQuery,
     variables: { customerAccessToken },
     cache: 'no-store'
   });

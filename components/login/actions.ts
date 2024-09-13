@@ -1,5 +1,6 @@
 'use server';
 
+import { createSession } from 'lib/session';
 import { createCustomer, createCustomerAccessToken, getCustomer } from 'lib/shopify';
 import { z } from 'zod';
 
@@ -42,12 +43,17 @@ export async function authenticate(prevState: string | undefined, formData: Form
     const res2 = await getCustomer(res.customerAccessToken.accessToken);
     console.log(res2);
 
+    if (!res2) return 'getCustomer failed';
+
     // Implement cookie-based Session management
+    const sessionData = res2;
+    await createSession(sessionData);
+
+    return 'create Session! it expires in one week.';
   } catch (error) {
     console.error(error);
     return 'Something wrong';
   }
-  return 'Login looks good!';
 }
 
 export async function signup(prevState: string | undefined, formData: FormData) {

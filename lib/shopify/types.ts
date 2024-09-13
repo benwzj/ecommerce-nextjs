@@ -294,13 +294,7 @@ export type ShopifyCustomerAccessTokenCreate = {
 };
 
 export type ShopifyCustomerCreateReturn = {
-  customer: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    acceptsMarketing: boolean;
-  };
+  customer: Omit<ShopifyCustomer, 'id'>;
   customerUserErrors: [
     {
       field: string;
@@ -333,3 +327,5 @@ export type ShopifyGetCustomerOperation = {
   };
   variables: { customerAccessToken: string };
 };
+
+export type SessionPayload = Omit<ShopifyCustomer, 'id'>;
