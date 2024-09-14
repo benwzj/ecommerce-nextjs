@@ -1,6 +1,6 @@
 'use server';
 
-import { createSession } from 'lib/session';
+import { createSession, deleteSession, updateSession } from 'lib/session';
 import { createCustomer, createCustomerAccessToken, getCustomer } from 'lib/shopify';
 import { z } from 'zod';
 
@@ -100,4 +100,12 @@ export async function signup(prevState: string | undefined, formData: FormData) 
     return 'Something wrong';
   }
   return 'SignUp looks good!';
+}
+
+export async function logout() {
+  deleteSession();
+}
+
+export async function loginState(): Promise<boolean> {
+  return await updateSession();
 }

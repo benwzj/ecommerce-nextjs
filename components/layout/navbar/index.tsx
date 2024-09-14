@@ -1,12 +1,10 @@
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
-import { Login, SignUp } from 'components/login';
+import { Logout } from 'components/login';
 import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
-
 import Link from 'next/link';
 import { Suspense } from 'react';
-
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
 const { SITE_NAME } = process.env;
@@ -66,8 +64,8 @@ export default async function Navbar() {
           <div className="hidden font-serif text-3xl font-bold text-green-800 md:flex">Supply</div>
         </Link>
         <div className="flex justify-end gap-1 md:w-1/3">
-          <SignUp />
-          <Login />
+          {/* {await loginState() ? (<><Logout /></>) : (<><SignUp /><Login /></>)} */}
+          <Logout />
           <Suspense fallback={<OpenCart />}>
             <Cart />
           </Suspense>

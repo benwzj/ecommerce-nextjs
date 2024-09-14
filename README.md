@@ -26,6 +26,10 @@ This project is based on Framework Next.js 14.
   - You will need a secret for secure revalidation.
 - Using Shopify as a full-featured CMS. You can manage the Products, Collections, Pages, Navigation Menus, SEO in Shopify platform.
 
+## Icon
+
+Here is using icons from "heroicons".
+
 ## Running locally
 
 Need to the environment variables in `.env` file to run locally.

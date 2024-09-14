@@ -17,9 +17,9 @@ export default function LogoIcon(props: React.ComponentProps<'svg'>) {
           d="M6,17v2m4-2v4m4-4v2m4-2v4M17,5a4.08,4.08,0,0,0-.93.12,5,5,0,0,0-9,2.09A3,3,0,1,0,6,13H17a4,4,0,0,0,0-8Z"
           fill="none"
           stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
       </g>
     </svg>
