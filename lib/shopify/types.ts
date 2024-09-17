@@ -266,7 +266,7 @@ export type ShopifyProductsOperation = {
 
 export type ShopifyCustomer = {
   id: string;
-  firstNam: string;
+  firstName: string;
   lastName: string;
   email: string;
   phone: string;
@@ -274,7 +274,7 @@ export type ShopifyCustomer = {
 };
 
 export type ShopifyCustomerCreateInput = {
-  firstNam?: string;
+  firstName?: string;
   lastName?: string;
   email: string;
   phone?: string;

@@ -1,7 +1,8 @@
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
-import { Logout } from 'components/login';
+import { Login, Logout, SignUp } from 'components/login';
 import LogoSquare from 'components/logo-square';
+import { getSession } from 'lib/session';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -11,6 +12,7 @@ const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
+  const session = await getSession();
 
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
@@ -64,8 +66,17 @@ export default async function Navbar() {
           <div className="hidden font-serif text-3xl font-bold text-green-800 md:flex">Supply</div>
         </Link>
         <div className="flex justify-end gap-1 md:w-1/3">
-          {/* {await loginState() ? (<><Logout /></>) : (<><SignUp /><Login /></>)} */}
-          <Logout />
+          {session ? (
+            <>
+              <Logout />
+            </>
+          ) : (
+            <>
+              <SignUp />
+              <Login />
+            </>
+          )}
+          {/* <Logout /><SignUp /><Login /> */}
           <Suspense fallback={<OpenCart />}>
             <Cart />
           </Suspense>
