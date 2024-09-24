@@ -2,7 +2,8 @@ import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
 import { Login, Logout, SignUp } from 'components/login';
 import LogoSquare from 'components/logo-square';
-import { getSession } from 'lib/session';
+//import { getSession } from 'lib/session';
+import { auth } from 'auth';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -12,7 +13,8 @@ const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
-  const session = await getSession();
+  //const session = await getSession();
+  const session = await auth();
 
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
