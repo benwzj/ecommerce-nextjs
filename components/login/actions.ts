@@ -120,6 +120,6 @@ export async function signup(prevState: string | undefined, formData: FormData) 
 }
 
 export async function logout() {
-  //deleteSession();
-  await signOut();
+  await signOut(); //deleteSession();
+  // update navbar ...
 }

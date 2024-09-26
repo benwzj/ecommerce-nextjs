@@ -1,6 +1,6 @@
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
-import { Login, Logout, SignUp } from 'components/login';
+import { Login, SignUp, User } from 'components/login';
 import LogoSquare from 'components/logo-square';
 //import { getSession } from 'lib/session';
 import { auth } from 'auth';
@@ -70,7 +70,7 @@ export default async function Navbar() {
         <div className="flex justify-end gap-1 md:w-1/3">
           {session ? (
             <>
-              <Logout />
+              <User />
             </>
           ) : (
             <>
