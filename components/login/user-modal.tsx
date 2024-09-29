@@ -1,6 +1,7 @@
 'use client';
 
 import { Menu, Transition } from '@headlessui/react';
+import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
 import { logout } from './actions';
 
@@ -10,6 +11,13 @@ type svgProps = {
 };
 
 export default function UserModal() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await logout();
+    router.refresh();
+  };
+
   return (
     // <div className="fixed top-16 w-56 text-right">
     <Menu as="div" className="relative inline-block text-left">
@@ -64,7 +72,7 @@ export default function UserModal() {
                   className={`${
                     active ? 'bg-violet-500 text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  onClick={() => logout()}
+                  onClick={() => handleLogout()}
                 >
                   {active ? (
                     <SignoutActiveIcon className="mr-2 h-5 w-5" ariaHidden="true" />

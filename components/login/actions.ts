@@ -121,5 +121,4 @@ export async function signup(prevState: string | undefined, formData: FormData) 
 
 export async function logout() {
   await signOut(); //deleteSession();
-  // update navbar ...
 }

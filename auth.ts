@@ -12,6 +12,7 @@ async function getUser(email: string, password: string): Promise<ShopifyCustomer
   if (!tokenRes) return;
 
   if (!tokenRes.customerAccessToken) {
+    console.log('createCustomerAccessToken Error: No token return');
     const message = tokenRes.customerUserErrors[0].message;
     throw new Error(message);
   }
@@ -46,7 +47,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email, password);
           if (!user) return null;
-
+          //Response.redirect(request?.url);
           return user;
         }
         return null;
