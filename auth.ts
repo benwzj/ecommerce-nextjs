@@ -5,9 +5,11 @@ import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 
 async function getUser(email: string, password: string): Promise<ShopifyCustomer | undefined> {
-  // create customerAccessToken according to email password.
-  // If Success, Then SignIn success
-  // If Fail, SignIn fail.
+  // Shopify sign in steps:
+  // 1. Create customerAccessToken according to email password.
+  //  - If Success, Then SignIn success.
+  //  - If Fail, SignIn fail.
+  // 2. Get Customer information according to customerAccessToken.
   const tokenRes = await createCustomerAccessToken(email, password);
   if (!tokenRes) return;
 

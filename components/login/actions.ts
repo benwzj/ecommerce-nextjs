@@ -10,6 +10,7 @@ import { z } from 'zod';
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
     await signIn('credentials', formData);
+    // refresh sidebar ...
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
