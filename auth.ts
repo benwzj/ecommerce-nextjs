@@ -11,17 +11,23 @@ async function getUser(email: string, password: string): Promise<ShopifyCustomer
   //  - If Fail, SignIn fail.
   // 2. Get Customer information according to customerAccessToken.
   const tokenRes = await createCustomerAccessToken(email, password);
-  if (!tokenRes) return;
-
-  if (!tokenRes.customerAccessToken) {
-    console.log('createCustomerAccessToken Error: No token return');
+  if (tokenRes) {
+    if (tokenRes.customerAccessToken) {
+      // fetch User information according to customerAccessToken
+      try {
+        const customerRes = await getCustomer(tokenRes.customerAccessToken.accessToken);
+        return customerRes;
+      } catch (e) {
+        console.log('getCustomer fail: ' + e?.toString());
+      }
+    }
+    console.log('createCustomerAccessToken Error: return token is null');
     const message = tokenRes.customerUserErrors[0].message;
-    throw new Error(message);
+    console.log('createCustomerAccessToken ErrorMessage: ' + message);
+    //throw new Error(message);
   }
-
-  // fetch User information according to customerAccessToken
-  const customerRes = await getCustomer(tokenRes.customerAccessToken.accessToken);
-  return customerRes;
+  console.log('createCustomerAccessToken Error: return null');
+  return undefined;
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({

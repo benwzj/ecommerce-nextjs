@@ -3,6 +3,7 @@
 // import { createSession, deleteSession } from 'lib/session';
 import { signIn, signOut } from 'auth';
 import { AuthError } from 'next-auth';
+import { revalidatePath } from 'next/cache';
 // import { createCustomer, createCustomerAccessToken, getCustomer } from 'lib/shopify';
 import { createCustomer } from 'lib/shopify';
 import { z } from 'zod';
@@ -11,6 +12,7 @@ export async function authenticate(prevState: string | undefined, formData: Form
   try {
     await signIn('credentials', formData);
     // refresh sidebar ...
+    revalidatePath('/');
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
