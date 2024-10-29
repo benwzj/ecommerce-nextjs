@@ -16,6 +16,8 @@ async function getUser(email: string, password: string): Promise<ShopifyCustomer
       // fetch User information according to customerAccessToken
       try {
         const customerRes = await getCustomer(tokenRes.customerAccessToken.accessToken);
+        console.log(`getCustomer: `);
+        console.log(customerRes);
         return customerRes;
       } catch (e) {
         console.log('getCustomer fail: ' + e?.toString());
@@ -52,8 +54,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           .safeParse(credentials);
 
         if (parsedCredentials.success) {
-          const { email, password } = parsedCredentials.data;
-          const user = await getUser(email, password);
+          const user = await getUser(parsedCredentials.data.email, parsedCredentials.data.password);
           if (!user) return null;
           //Response.redirect(request?.url);
           return user;

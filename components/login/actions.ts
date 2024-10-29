@@ -6,45 +6,59 @@ import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 // import { createCustomer, createCustomerAccessToken, getCustomer } from 'lib/shopify';
 import { createCustomer } from 'lib/shopify';
+import { headers } from 'next/headers';
 import { z } from 'zod';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
+  const SignInSchema = z.object({
+    email: z.string().email(),
+    password: z
+      .string()
+      .min(6, { message: 'Password is too short' })
+      .max(20, { message: 'Password is too long' })
+  });
+
+  const validatedFields = SignInSchema.safeParse({
+    email: formData.get('email'),
+    password: formData.get('password')
+  });
+
+  if (!validatedFields.success) {
+    // can return more detail information
+    // by reading validatedFields.error.flatten().fieldErrors
+    return 'Validated Fields Failed. Failed to Sign In.';
+  }
+
+  const { email, password } = validatedFields.data;
+
+  const headerList = headers();
+  const pathname = headerList.get('x-current-path');
+  const currentPathname = pathname ? pathname : undefined;
+
+  console.log(currentPathname);
+
   try {
-    await signIn('credentials', formData);
+    await signIn('credentials', {
+      email,
+      password,
+      redirect: true,
+      redirectTo: currentPathname
+    });
     // refresh sidebar ...
     revalidatePath('/');
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Invalid credentials.';
+          return 'AuthError: Invalid credentials.';
         default:
-          return 'Something went wrong.';
+          return 'AuthError: Something went wrong.';
       }
     }
+    console.log(error?.toString());
     return error?.toString();
     //throw error;
   }
-  // const SignInSchema = z.object({
-  //   email: z.string().email(),
-  //   password: z
-  //     .string()
-  //     .min(6, { message: 'Password is too short' })
-  //     .max(20, { message: 'Password is too long' })
-  // });
-
-  // const validatedFields = SignInSchema.safeParse({
-  //   email: formData.get('email'),
-  //   password: formData.get('password')
-  // });
-
-  // if (!validatedFields.success) {
-  //   // can return more detail information
-  //   // by reading validatedFields.error.flatten().fieldErrors
-  //   return 'Validated Fields Failed. Failed to Sign In.';
-  // }
-
-  // const { email, password } = validatedFields.data;
 
   // try {
   //   // create customerAccessToken according to email password.
