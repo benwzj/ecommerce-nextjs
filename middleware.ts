@@ -1,6 +1,8 @@
+import { auth } from 'auth';
 import { NextRequest, NextResponse } from 'next/server';
 
-export default async function middleware(req: NextRequest) {
+export default auth((req: NextRequest) => {
+  //export default async function auth(req: NextRequest) {
   // Decrypt the session from the cookie
   // const cookie = cookies().get('session')?.value;
   // const session = await decrypt(cookie);
@@ -12,11 +14,11 @@ export default async function middleware(req: NextRequest) {
   const headers = new Headers(req.headers);
   headers.set('x-current-path', req.nextUrl.pathname);
   return NextResponse.next({ headers });
-}
+});
 
 // Routes Middleware should not run on
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)']
 };
 
-export { auth as middleware } from 'auth';
+// export { auth as middleware } from 'auth';

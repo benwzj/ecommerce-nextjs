@@ -32,6 +32,7 @@ async function getUser(email: string, password: string): Promise<ShopifyCustomer
   return undefined;
 }
 
+// export const { handlers, signIn, signOut, auth } = NextAuth({
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({

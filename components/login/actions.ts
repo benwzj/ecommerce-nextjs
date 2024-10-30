@@ -2,11 +2,11 @@
 
 // import { createSession, deleteSession } from 'lib/session';
 import { signIn, signOut } from 'auth';
-import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 // import { createCustomer, createCustomerAccessToken, getCustomer } from 'lib/shopify';
 import { createCustomer } from 'lib/shopify';
 import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
@@ -32,33 +32,36 @@ export async function authenticate(prevState: string | undefined, formData: Form
   const { email, password } = validatedFields.data;
 
   const headerList = headers();
-  const pathname = headerList.get('x-current-path');
-  const currentPathname = pathname ? pathname : undefined;
+  const pathname = headerList.get('x-current-path') ?? '/';
+  //const currentPathname = pathname ? pathname : undefined;
 
-  console.log(currentPathname);
+  // console.log ('currentPathname: ');
+  // console.log (currentPathname);
 
-  try {
-    await signIn('credentials', {
-      email,
-      password,
-      redirect: true,
-      redirectTo: currentPathname
-    });
-    // refresh sidebar ...
-    revalidatePath('/');
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return 'AuthError: Invalid credentials.';
-        default:
-          return 'AuthError: Something went wrong.';
-      }
-    }
-    console.log(error?.toString());
-    return error?.toString();
-    //throw error;
-  }
+  //try {
+
+  await signIn('credentials', {
+    email,
+    password,
+    redirect: false
+    // redirectTo: currentPathname,
+  });
+  revalidatePath(pathname);
+  redirect(pathname);
+  // refresh sidebar ...
+  // } catch (error) {
+  //   if (error instanceof AuthError) {
+  //     switch (error.type) {
+  //       case 'CredentialsSignin':
+  //         return 'AuthError: Invalid credentials.';
+  //       default:
+  //         return 'AuthError: Something went wrong.';
+  //     }
+  //   }
+  //   console.log('SignIn Error: '+ error?.toString() )
+  //   return error?.toString();
+  //   //throw error;
+  // }
 
   // try {
   //   // create customerAccessToken according to email password.

@@ -9,6 +9,9 @@ import { authenticate } from './actions';
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
+  console.log('errorMessage: ');
+  console.log(errorMessage);
+
   return (
     <form action={dispatch} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8 dark:border-neutral-700 dark:bg-stone-900/40 dark:text-white">
