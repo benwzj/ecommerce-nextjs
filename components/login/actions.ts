@@ -2,6 +2,7 @@
 
 // import { createSession, deleteSession } from 'lib/session';
 import { signIn, signOut } from 'auth';
+import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 // import { createCustomer, createCustomerAccessToken, getCustomer } from 'lib/shopify';
 import { createCustomer } from 'lib/shopify';
@@ -38,30 +39,28 @@ export async function authenticate(prevState: string | undefined, formData: Form
   // console.log ('currentPathname: ');
   // console.log (currentPathname);
 
-  //try {
-
-  await signIn('credentials', {
-    email,
-    password,
-    redirect: false
-    // redirectTo: currentPathname,
-  });
-  revalidatePath(pathname);
-  redirect(pathname);
-  // refresh sidebar ...
-  // } catch (error) {
-  //   if (error instanceof AuthError) {
-  //     switch (error.type) {
-  //       case 'CredentialsSignin':
-  //         return 'AuthError: Invalid credentials.';
-  //       default:
-  //         return 'AuthError: Something went wrong.';
-  //     }
-  //   }
-  //   console.log('SignIn Error: '+ error?.toString() )
-  //   return error?.toString();
-  //   //throw error;
-  // }
+  try {
+    await signIn('credentials', {
+      email,
+      password,
+      redirect: false
+      // redirectTo: currentPathname,
+    });
+    revalidatePath(pathname);
+    redirect(pathname);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'AuthError: Invalid credentials.';
+        default:
+          return 'AuthError: Something went wrong.';
+      }
+    }
+    console.log('SignIn Error: ' + error?.toString());
+    return error?.toString();
+    //throw error;
+  }
 
   // try {
   //   // create customerAccessToken according to email password.
