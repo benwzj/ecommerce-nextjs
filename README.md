@@ -7,9 +7,10 @@ https://ecommerce-nextjs-hazel.vercel.app
 
 This project is based on Framework Next.js 14.
 
-- React
-- Next.js App Route.
-- Using Shopify as CMS.
+- Deploy at vercel serveer
+- Using Next.js, React
+- Next.js App Route
+- Using Shopify as CMS
 - GraphQL
 
 ## Running locally

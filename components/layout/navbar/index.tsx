@@ -61,11 +61,12 @@ export default async function Navbar() {
           </Suspense>
         </div>
         <Link href="/" className="flex w-full justify-center gap-1 md:w-1/3">
-          <div className="hidden font-serif text-3xl font-bold text-amber-600 md:flex">
-            SunnyDay
-          </div>
           <LogoSquare />
-          <div className="hidden font-serif text-3xl font-bold text-green-800 md:flex">Supply</div>
+          <div className="hidden font-serif text-3xl font-bold text-amber-600 md:flex">
+            WOW SUNNYDAY
+          </div>
+
+          {/* <div className="hidden font-serif text-3xl font-bold text-green-800 md:flex">Supply</div> */}
         </Link>
         <div className="flex justify-end gap-1 md:w-1/3">
           {session ? (
